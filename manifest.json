@@ -5,6 +5,7 @@
     "spectacle",
     "json-report",
     "flash",
-    "xml-report"
+    "xml-report",
+    "screenshot"
   ]
 }
