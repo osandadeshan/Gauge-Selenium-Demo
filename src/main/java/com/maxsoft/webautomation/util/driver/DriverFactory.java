@@ -6,8 +6,11 @@ import io.github.bonigarcia.wdm.FirefoxDriverManager;
 import io.github.bonigarcia.wdm.InternetExplorerDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
@@ -25,7 +28,9 @@ public class DriverFactory {
 
     private static final String BROWSER = System.getenv("browser");
     private static final String CHROME = "chrome";
+    private static final String HEADLESS_CHROME = "headless-chrome";
     private static final String FIREFOX = "firefox";
+    private static final String HEADLESS_FIREFOX = "headless-firefox";
     private static final String IE = "ie";
     private static final String EDGE = "edge";
     private static final String SAFARI = "safari";
@@ -46,9 +51,21 @@ public class DriverFactory {
             case CHROME:
                 ChromeDriverManager.getInstance().setup();
                 return new ChromeDriver();
+            case HEADLESS_CHROME:
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("--headless");
+                ChromeDriverManager.getInstance().setup();
+                return new ChromeDriver(chromeOptions);
             case FIREFOX:
                 FirefoxDriverManager.getInstance().setup();
                 return new FirefoxDriver();
+            case HEADLESS_FIREFOX:
+                FirefoxBinary firefoxBinary = new FirefoxBinary();
+                firefoxBinary.addCommandLineOptions("--headless");
+                FirefoxOptions firefoxOptions = new FirefoxOptions();
+                firefoxOptions.setBinary(firefoxBinary);
+                FirefoxDriverManager.getInstance().setup();
+                return new FirefoxDriver(firefoxOptions);
             case IE:
                 InternetExplorerDriverManager.getInstance().setup();
                 return new InternetExplorerDriver();
