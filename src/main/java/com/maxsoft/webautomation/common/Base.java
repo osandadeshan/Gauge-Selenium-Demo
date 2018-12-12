@@ -1,10 +1,12 @@
 package com.maxsoft.webautomation.common;
 
 import com.maxsoft.webautomation.util.driver.Driver;
+import com.thoughtworks.gauge.Gauge;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import java.io.File;
 
 /**
  * Project Name : Virtuoso UI Automation
@@ -16,27 +18,29 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  **/
 
 
-public abstract class Base {
+public class Base {
 
     protected static String URL = System.getenv("application_endpoint");
+    private String CURRENT_DIRECTORY = System.getProperty("user.dir");
+    private static long timeout = Long.parseLong(System.getenv("timeout"));
     private WebDriver driver = Driver.driver;
 
-    public Base() {
+    public Base(){
         PageFactory.initElements(driver, this);
     }
 
     protected void waitForElementClickable(WebElement element){
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
     protected void waitForElementVisible(WebElement element){
-        WebDriverWait wait = new WebDriverWait(driver, 15);
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
     protected void waitForElementNotVisible(WebElement element){
-        WebDriverWait wait = new WebDriverWait(driver, 60);
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
         wait.until(ExpectedConditions.invisibilityOf(element));
     }
 
@@ -66,12 +70,27 @@ public abstract class Base {
         return element.getText();
     }
 
-    protected void freeze(int seconds) {
+    public void idle(int seconds){
         try {
             Thread.sleep(seconds * 1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public String testDataExcelFilePath(){
+        String testDataExcelFilePath = "";
+        try {
+            testDataExcelFilePath = System.getenv("test_data_excel_file_path");
+        } catch (Exception ex) {
+           testDataExcelFilePath = "";
+        }
+        return CURRENT_DIRECTORY + File.separator + testDataExcelFilePath;
+    }
+
+    public void print(String text){
+        System.out.println(text);
+        Gauge.writeMessage(text);
     }
 
 

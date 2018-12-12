@@ -1,11 +1,14 @@
 # Login Specification
-Date Created    : 12/02/2018
+
+Project Name    : Gauge-UI-Automation-Demo
+Developer		: Osanda Deshan
 Version   		: 1.0.0
-Owner      		: Osanda Deshan
+Date            : 12/08/2018
+Time            : 20:59
 Description  	: This is an executable specification file which covers the login scenarios.
 
 
-table: /resources/test data/test users.csv
+table: /resources/test_data/csv/test_users.csv
 
 
 
