@@ -19,33 +19,26 @@ import org.openqa.selenium.support.PageFactory;
 
 public class FeatureCataloguePage extends CommonPage {
 
-    private static String LoginPageUrl = URL;
     private WebDriver driver = Driver.driver;
 
-    @FindBy(id = "username")
-    private WebElement TXT_USERNAME;
+    //District Set Up Locators
+    @FindBy(id = "district-setup-menu-item-link")
+    private WebElement LBL_DISTRICTSETUP;
 
-    @FindBy(id = "password")
-    private WebElement TXT_PASSWORD;
-
-    @FindBy(id = "kc-login")
-    private WebElement LOGIN_IN;
+    @FindBy(id = "manage-districts-menu-item-link")
+    private WebElement MANAGEDISTRICT;
 
 
     public FeatureCataloguePage() {
         PageFactory.initElements(driver, this);
     }
 
-    public void navigateToLogin(){
-        driver.get(LoginPageUrl);
-    }
+    public void navigateTodistrictCreation(){
 
-    public void login(String username, String password){
-        setTextAs(TXT_USERNAME, username);
-        setTextAs(TXT_PASSWORD, password);
-        clickElement(LOGIN_IN);
+        clickElement(LBL_DISTRICTSETUP);
         waitUntilLoadingCompleted();
     }
 
 
 }
+

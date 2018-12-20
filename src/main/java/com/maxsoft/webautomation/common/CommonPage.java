@@ -29,6 +29,9 @@ public class CommonPage extends Base {
     @FindBy(xpath = "//body//div[@id='virtuoso-loader'][@style='display: none;']")
     private WebElement ICON_PAGE_LOADER;
 
+    @FindBy(id = "toast-container")
+    private WebElement TOAST_MESSAGE;
+
 
     public CommonPage() {
         PageFactory.initElements(driver, this);
@@ -36,6 +39,10 @@ public class CommonPage extends Base {
 
     public void waitUntilLoadingCompleted(){
         waitForElementNotVisible(ICON_PAGE_LOADER);
+    }
+
+    public void waitUntilToastMessageDisappeared(){
+        waitForElementNotVisible(TOAST_MESSAGE);
     }
 
     public void signOut(){

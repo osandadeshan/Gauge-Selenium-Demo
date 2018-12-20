@@ -8,7 +8,7 @@ Time            : 20:59
 Description  	: This is an executable specification file which covers the login scenarios.
 
 
-table: /resources/test_data/csv/test_users.csv
+table: ./resources/test_data/csv/test_users.csv
 
 
 

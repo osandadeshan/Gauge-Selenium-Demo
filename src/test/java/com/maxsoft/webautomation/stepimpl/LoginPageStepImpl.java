@@ -6,15 +6,6 @@ import com.thoughtworks.gauge.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-/**
- * Project Name : Virtuoso UI Automation
- * Developer    : Osanda Deshan
- * Version      : 1.0.0
- * Date         : 12/02/2018
- * Time         : 2:43 PM
- * Description  :
- **/
-
 
 public class LoginPageStepImpl {
 
