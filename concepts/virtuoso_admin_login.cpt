@@ -1,0 +1,13 @@
+Project Name    : Gauge-UI-Automation-Demo
+Developer		: Osanda Deshan
+Version   		: 1.0.0
+Date            : 23/12/2018
+Time            : 09:18
+Description  	: This is an executable concept file
+
+
+
+# Login as the Virtuoso Admin
+
+* On Login page
+* Login to the application using the username as "administrator@virtuoso.com" and password as "welcome1!"

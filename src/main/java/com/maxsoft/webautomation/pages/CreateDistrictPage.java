@@ -7,17 +7,24 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.nio.file.AccessDeniedException;
+/**
+ * Project Name : Virtuoso UI Automation
+ * Developer    : Kushani Karunarathne
+ * Version      : 1.0.0
+ * Date         : 12/23/2018
+ * Time         : 9:08 AM
+ * Description  :
+ **/
+
 
 public class CreateDistrictPage extends CommonPage {
 
-    private static String LoginPageUrl = URL;
     private WebDriver driver = Driver.driver;
 
-    // Basic Information section
+    // Basic Information Section
 
     @FindBy(id = "district-name")
-    private WebElement TXT_DISTRICTNAME;
+    private WebElement TXT_DISTRICT_NAME;
 
     @FindBy(id = "location")
     private WebElement TXT_ADDRESS;
@@ -26,41 +33,41 @@ public class CreateDistrictPage extends CommonPage {
     private WebElement TXT_TIMEZONE;
 
     @FindBy(xpath = "//ul[@class='select2-results__options'][@id='select2-district-tz-results']/li[contains(text(), '(GMT+8:00) Australia/Perth')]")
-    private WebElement DRPDWN_TIMESELECTION;
+    private WebElement DROPDOWN_TIME_SELECTION;
 
     @FindBy(id = "district-domain")
-    private WebElement TXT_EMAILDOMAIN;
+    private WebElement TXT_EMAIL_DOMAIN;
 
     @FindBy(id = "security-realm")
     private WebElement TXT_REALAM;
 
-    //Scholastic Years section
+    // Scholastic Years Section
 
     @FindBy(xpath = "//*[@id=\"navigation-panel\"]//a[text()='Scholastic Years']")
-    private WebElement BTN_SCHYEARNAVIGATION;
+    private WebElement TAB_SCHOLASTIC_YEARS;
 
     @FindBy(xpath = "//input[@class='form-control'][@data-field-name='year']")
     private WebElement TXT_YEAR;
 
     @FindBy(xpath = "//input[@class='form-control'][@data-field-name='scholasticYear.startDate']")
-    private WebElement TXT_STARTDATE;
+    private WebElement TXT_START_DATE;
 
     @FindBy(xpath = "//input[@class='form-control'][@data-field-name='scholasticYear.endDate']")
-    private WebElement TXT_ENDDATE;
+    private WebElement TXT_END_DATE;
 
-    // District Administrator section
+    // District Administrator Section
 
     @FindBy(xpath = "//*[@id=\"navigation-panel\"]//a[text()='District Administrators']")
-    private WebElement BTN_DISTRICTADMINNAVIGATION;
+    private WebElement TAB_DISTRICT_ADMIN;
 
     @FindBy(xpath = "//input[@class='form-control'][@data-field-name='firstName']")
-    private WebElement TXT_FIRSTNAME;
+    private WebElement TXT_FIRST_NAME;
 
     @FindBy(xpath = "//input[@class='form-control'][@data-field-name='lastName']")
-    private WebElement TXT_LASTNAME;
+    private WebElement TXT_LAST_NAME;
 
     @FindBy(xpath = "//input[@class='form-control'][@data-field-name='employeeNumber']")
-    private WebElement TXT_EMPLOYEENO;
+    private WebElement TXT_EMPLOYEE_NO;
 
     @FindBy(xpath = "//input[@class='form-control'][@data-field-name='email']")
     private WebElement TXT_EMAIL;
@@ -72,37 +79,34 @@ public class CreateDistrictPage extends CommonPage {
     private WebElement BTN_SUBMIT;
 
 
-
     public CreateDistrictPage() {
         PageFactory.initElements(driver, this);
     }
 
-    public void createDistrict(String districtname, String address, String emaildomain, String realam, String firstname, String lastname, String empno, String email) {
-
+    public void createDistrict(String districtName, String address, String emailDomain, String realam, String districtAdminFirstName, String districtAdminLastName,
+                               String districtAdminEmpNo) {
+        // Basic Information Section
         waitUntilLoadingCompleted();
-        setTextAs(TXT_DISTRICTNAME, districtname);
+        setTextAs(TXT_DISTRICT_NAME, districtName);
         setTextAs(TXT_ADDRESS, address);
-        //setTextAs(TXT_TIMEZONE, timezone);
-        setTextAs(TXT_EMAILDOMAIN, emaildomain);
+        setTextAs(TXT_EMAIL_DOMAIN, emailDomain);
         setTextAs(TXT_REALAM, realam);
         clickElement(BTN_NEXT);
 
-        waitUntilLoadingCompleted();
-        //setTextAs(TXT_YEAR, year);
-        //setTextAs(TXT_STARTDATE, startdate);
-        //setTextAs(TXT_ENDDATE, enddate);
+        // Scholastic Years Section
         waitUntilToastMessageDisappeared();
         clickElement(BTN_NEXT);
 
-        waitUntilLoadingCompleted();
-        setTextAs(TXT_FIRSTNAME, firstname);
-        setTextAs(TXT_LASTNAME, lastname);
-        setTextAs(TXT_EMPLOYEENO, empno);
-        setTextAs(TXT_EMAIL, email);
+        // District Administrator Section
+        setTextAs(TXT_FIRST_NAME, districtAdminFirstName);
+        setTextAs(TXT_LAST_NAME, districtAdminLastName);
+        setTextAs(TXT_EMPLOYEE_NO, districtAdminEmpNo);
+        String districtAdminEmail = districtAdminFirstName + "." + districtAdminLastName + "@" + emailDomain;
+        setTextAs(TXT_EMAIL, districtAdminEmail);
+        waitUntilToastMessageDisappeared();
         clickElement(BTN_SUBMIT);
-
+        waitUntilToastMessageDisappeared();
     }
-
 
 
 }

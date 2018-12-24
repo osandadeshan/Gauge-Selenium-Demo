@@ -20,7 +20,7 @@ public class CommonPage extends Base {
 
     private WebDriver driver = Driver.driver;
 
-    @FindBy(xpath = "//i[@class='fa fa-chevron-down']")
+    @FindBy(xpath = "//span[@class='down-arrow down-arrow-profile dropdown-toggle']")
     private WebElement MENU_PROFILE;
 
     @FindBy(xpath = "//a[@class='profile-menu-item-link signout-link no-padding']")
@@ -29,7 +29,7 @@ public class CommonPage extends Base {
     @FindBy(xpath = "//body//div[@id='virtuoso-loader'][@style='display: none;']")
     private WebElement ICON_PAGE_LOADER;
 
-    @FindBy(id = "toast-container")
+    @FindBy(xpath = "//div[@id='toast-container']")
     private WebElement TOAST_MESSAGE;
 
 
@@ -38,11 +38,12 @@ public class CommonPage extends Base {
     }
 
     public void waitUntilLoadingCompleted(){
-        waitForElementNotVisible(ICON_PAGE_LOADER);
+        waitUntilElementInvisible(ICON_PAGE_LOADER);
     }
 
     public void waitUntilToastMessageDisappeared(){
-        waitForElementNotVisible(TOAST_MESSAGE);
+        clickElement(TOAST_MESSAGE);
+        waitUntilElementInvisible(TOAST_MESSAGE);
     }
 
     public void signOut(){

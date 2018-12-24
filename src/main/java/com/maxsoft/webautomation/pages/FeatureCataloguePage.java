@@ -9,9 +9,9 @@ import org.openqa.selenium.support.PageFactory;
 
 /**
  * Project Name : Virtuoso UI Automation
- * Developer    : Osanda Deshan
+ * Developer    : Kushani Karunarathne
  * Version      : 1.0.0
- * Date         : 12/02/2018
+ * Date         : 12/20/2018
  * Time         : 2:18 PM
  * Description  :
  **/
@@ -21,21 +21,25 @@ public class FeatureCataloguePage extends CommonPage {
 
     private WebDriver driver = Driver.driver;
 
-    //District Set Up Locators
+    // District Set Up Locators
     @FindBy(id = "district-setup-menu-item-link")
-    private WebElement LBL_DISTRICTSETUP;
+    private WebElement LBL_DISTRICT_SETUP;
 
     @FindBy(id = "manage-districts-menu-item-link")
-    private WebElement MANAGEDISTRICT;
+    private WebElement LBL_MANAGE_DISTRICT;
 
 
     public FeatureCataloguePage() {
         PageFactory.initElements(driver, this);
     }
 
-    public void navigateTodistrictCreation(){
+    public void navigateToDistrictCreation(){
+        clickElement(LBL_DISTRICT_SETUP);
+        waitUntilLoadingCompleted();
+    }
 
-        clickElement(LBL_DISTRICTSETUP);
+    public void navigateToManageDistricts(){
+        clickElement(LBL_MANAGE_DISTRICT);
         waitUntilLoadingCompleted();
     }
 

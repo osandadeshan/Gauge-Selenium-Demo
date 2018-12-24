@@ -6,13 +6,22 @@ import com.thoughtworks.gauge.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+/**
+ * Project Name : Virtuoso UI Automation
+ * Developer    : Osanda Deshan
+ * Version      : 1.0.0
+ * Date         : 12/02/2018
+ * Time         : 2:18 PM
+ * Description  :
+ **/
+
 
 public class LoginPageStepImpl {
 
     private WebDriver driver = Driver.driver;
     private LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
 
-    @Step("On login page")
+    @Step("On Login page")
     public void navigateToLogin(){
         loginPage.navigateToLogin();
     }
