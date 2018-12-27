@@ -1,6 +1,6 @@
-package com.maxsoft.webautomation.stepimpl;
+package com.maxsoft.webautomation.stepimpl.page;
 
-import com.maxsoft.webautomation.pages.FeatureCataloguePage;
+import com.maxsoft.webautomation.page.FeatureCataloguePage;
 import com.maxsoft.webautomation.util.driver.Driver;
 import com.thoughtworks.gauge.Step;
 import org.openqa.selenium.WebDriver;

@@ -1,4 +1,4 @@
-package com.maxsoft.webautomation.stepimpl;
+package com.maxsoft.webautomation.stepimpl.common;
 
 import com.maxsoft.webautomation.common.Base;
 import com.maxsoft.webautomation.util.driver.Driver;
@@ -29,7 +29,9 @@ public class CommonStepImpl {
 
     @Step("test")
     public void main() {
-        Excel.getData("TestData", "password");
+        Excel.getData("Test Data", "Username");
+        Excel.getData("Test Data", "Password");
+        Excel.getData("Test Data", "Purchase Token");
     }
 
 

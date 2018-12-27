@@ -16,7 +16,7 @@ table: ./resources/test_data/csv/test_users.csv
 
 * On Login page
 * Login to the application using the username as <Username> and password as <Password>
-* Page title is "VELISP - Home"
+* Page title equals to the "Home Page Title" in "Test Data" excel sheet
 
 _______________________________
 * Sign out from the application

@@ -1,4 +1,4 @@
-package com.maxsoft.webautomation.pages;
+package com.maxsoft.webautomation.page;
 
 import com.maxsoft.webautomation.common.CommonPage;
 import com.maxsoft.webautomation.util.driver.Driver;

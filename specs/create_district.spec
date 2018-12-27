@@ -15,7 +15,7 @@ table: ./resources/test_data/csv/create_district.csv
 ## Create District Scenario
 
 * Login as the Virtuoso Admin
-* Page title is "VELISP - Home"
+* Page title equals to the "Home Page Title" in "Test Data" excel sheet
 * On District Creation page
 * Create a new district 
 

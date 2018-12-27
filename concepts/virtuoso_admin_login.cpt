@@ -10,4 +10,7 @@ Description  	: This is an executable concept file
 # Login as the Virtuoso Admin
 
 * On Login page
-* Login to the application using the username as "administrator@virtuoso.com" and password as "welcome1!"
+* Login to the application using the username and password
+
+    |Sheet Name For Username|Key Name For Username  |Sheet Name For Password|Key Name For Password  |
+    |Login Data             |Virtuoso Admin Username|Login Data             |Virtuoso Admin Password|
