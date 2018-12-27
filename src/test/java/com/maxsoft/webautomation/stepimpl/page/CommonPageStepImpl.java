@@ -1,7 +1,8 @@
-package com.maxsoft.webautomation.stepimpl;
+package com.maxsoft.webautomation.stepimpl.page;
 
 import com.maxsoft.webautomation.common.CommonPage;
 import com.maxsoft.webautomation.util.driver.Driver;
+import com.maxsoft.webautomation.util.reader.Excel;
 import com.thoughtworks.gauge.Step;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
@@ -25,6 +26,11 @@ public class CommonPageStepImpl {
     @Step("Page title is <pageTitle>")
     public void isPageTitleEquals(String pageTitle) {
         Assert.assertEquals("Page title differs!\n", pageTitle, driver.getTitle());
+    }
+
+    @Step("Page title equals to the <key> in <sheetName> excel sheet")
+    public void isPageTitleEquals(String key, String sheetName) {
+        Assert.assertEquals("Page title differs!\n", Excel.getData(sheetName, key), commonPage.getPageTitle());
     }
 
     @Step("Sign out from the application")

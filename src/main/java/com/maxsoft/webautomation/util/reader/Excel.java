@@ -50,7 +50,7 @@ public class Excel {
             Workbook workbook = new XSSFWorkbook(excelFile);
             Sheet workSheet = workbook.getSheet(sheetName);
             cellValue = workSheet.getRow(Excel.findRowNumber(sheetName, cellContent)).getCell(colNum).getStringCellValue();
-            baseObj.print("Expected value in the test data excel file for the \"" + cellContent + "\" is [" + cellValue + "]");
+            baseObj.print("Key \t[" + cellContent + "] \t\t\t\t\t→ Value \t[" + cellValue + "]");
             return cellValue;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
