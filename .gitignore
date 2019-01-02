@@ -6,3 +6,5 @@
 /out
 /docs
 /specs/Test.spec
+*.DS_Store
+.DS_Store

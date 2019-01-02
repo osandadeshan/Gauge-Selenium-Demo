@@ -41,6 +41,11 @@ public class CommonPage extends Base {
         waitUntilElementInvisible(ICON_PAGE_LOADER);
     }
 
+    public String getPageTitle(){
+        waitUntilLoadingCompleted();
+        return driver.getTitle();
+    }
+
     public void waitUntilToastMessageDisappeared(){
         clickElement(TOAST_MESSAGE);
         waitUntilElementInvisible(TOAST_MESSAGE);

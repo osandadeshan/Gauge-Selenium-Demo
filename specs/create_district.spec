@@ -15,15 +15,8 @@ table: ./resources/test_data/csv/create_district.csv
 ## Create District Scenario
 
 * Login as the Virtuoso Admin
-* Page title is "VELISP - Home"
-* On District Creation page
-* Create a new district 
-
-   |District Name  |Address  |Email Domain  |Realam  |FirstName  |LastName  |EMP No  |
-   |---------------|---------|--------------|--------|-----------|----------|--------|
-   |<District Name>|<Address>|<Email Domain>|<Realam>|<FirstName>|<LastName>|<EMP No>|
-
-* Scroll to the district from district name saved in data store
+* Page title equals to the "Home Page Title" in "Test Data" excel sheet
+* Create district using district name as <District Name>, address as <Address>, email domain as <Email Domain>, security realam as <Realam>, first name as <FirstName>, last name as <LastName> and emp no as <EMP No>
 
 _______________________________
 * Sign out from the application

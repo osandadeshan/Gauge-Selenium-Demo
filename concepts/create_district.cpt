@@ -1,0 +1,20 @@
+Project Name    : Gauge-UI-Automation-Demo
+Developer       : Osanda Deshan
+Version         : 1.0.0
+Date            : 02/01/2019
+Time            : 15:43
+Description     : This is an executable concept file
+
+
+
+# Create district using district name as <District Name>, address as <Address>, email domain as <Email Domain>, security realam as <Realam>, first name as <FirstName>, last name as <LastName> and emp no as <EMP No>
+
+* On District Creation page
+* Fill district information
+
+   |District Name  |Address  |Email Domain  |Realam  |FirstName  |LastName  |EMP No  |
+   |---------------|---------|--------------|--------|-----------|----------|--------|
+   |<District Name>|<Address>|<Email Domain>|<Realam>|<FirstName>|<LastName>|<EMP No>|
+
+* Submit district information
+* Scroll to the district from district name saved in data store

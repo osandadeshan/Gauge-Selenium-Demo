@@ -1,6 +1,6 @@
-package com.maxsoft.webautomation.stepimpl;
+package com.maxsoft.webautomation.stepimpl.page;
 
-import com.maxsoft.webautomation.pages.CreateDistrictPage;
+import com.maxsoft.webautomation.page.CreateDistrictPage;
 import com.maxsoft.webautomation.util.driver.Driver;
 import com.thoughtworks.gauge.Step;
 import org.openqa.selenium.WebDriver;
@@ -25,13 +25,13 @@ public class CreateDistrictPageStepImpl {
     private WebDriver driver = Driver.driver;
     private CreateDistrictPage createDistrictPage = PageFactory.initElements(driver, CreateDistrictPage.class);
 
-    @Step("Create a new district <table>")
+    @Step("Fill district information <table>")
     public void createDistrict(Table table) {
         String currentEpochTime = "";
         List<String> columnNames = table.getColumnNames();
         for (TableRow row : table.getTableRows()) {
             currentEpochTime = getCurrentEpochTime();
-            createDistrictPage.createDistrict(
+            createDistrictPage.fillDistrictInfo(
                     // Basic Information Section
                     row.getCell(columnNames.get(0)).concat(currentEpochTime),
                     row.getCell(columnNames.get(1)),
@@ -46,6 +46,11 @@ public class CreateDistrictPageStepImpl {
             createDistrictPage.saveToScenarioDataStore("districtName", row.getCell(columnNames.get(0)).concat(currentEpochTime));
             currentEpochTime = "";
         }
+    }
+
+    @Step("Submit district information")
+    public void submit(){
+        createDistrictPage.submit();
     }
 
 

@@ -1,4 +1,4 @@
-package com.maxsoft.webautomation.pages;
+package com.maxsoft.webautomation.page;
 
 import com.maxsoft.webautomation.common.CommonPage;
 import com.maxsoft.webautomation.util.driver.Driver;
@@ -8,17 +8,18 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 /**
- * Project Name : Gauge-UI-Automation-Demo
+ * Project Name : Virtuoso UI Automation
  * Developer    : Osanda Deshan
  * Version      : 1.0.0
- * Date         : 23/12/2018
- * Time         : 14:08
+ * Date         : 12/02/2018
+ * Time         : 2:18 PM
  * Description  :
  **/
 
 
-public class ManageDistrictPage extends CommonPage {
+public class LoginPage extends CommonPage {
 
+    private static String LoginPageUrl = URL;
     private WebDriver driver = Driver.driver;
 
     @FindBy(id = "username")
@@ -30,16 +31,20 @@ public class ManageDistrictPage extends CommonPage {
     @FindBy(id = "kc-login")
     private WebElement LOGIN_IN;
 
-    private static String districtNameRegex = "districtName";
-    private static String districtLocatorXpath = "//span[text()='" + districtNameRegex + "']";
 
-
-    public ManageDistrictPage() {
+    public LoginPage() {
         PageFactory.initElements(driver, this);
     }
 
-    public void scrollToDistrict(String districtName){
-        scrollToElement(districtLocatorXpath.replace(districtNameRegex, districtName));
+    public void navigateToLogin(){
+        driver.get(LoginPageUrl);
+    }
+
+    public void login(String username, String password){
+        setTextAs(TXT_USERNAME, username);
+        setTextAs(TXT_PASSWORD, password);
+        clickElement(LOGIN_IN);
+        waitUntilLoadingCompleted();
     }
 
 

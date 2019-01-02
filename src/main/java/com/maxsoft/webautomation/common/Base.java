@@ -39,8 +39,7 @@ public class Base {
     }
 
     protected void waitUntilElementClickable(WebElement element){
-        WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
-        wait.until(ExpectedConditions.elementToBeClickable(element));
+        new WebDriverWait(driver, TIMEOUT).until(ExpectedConditions.elementToBeClickable(element));
     }
 
     protected void waitUntilElementEnabled(final WebElement element){
@@ -63,8 +62,11 @@ public class Base {
     }
 
     protected void waitUntilElementVisible(final WebElement element){
-        WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
-        wait.until(ExpectedConditions.visibilityOf(element));
+        new WebDriverWait(driver, TIMEOUT).until(ExpectedConditions.visibilityOf(element));
+    }
+
+    protected void waitUntilElementVisible(String xpathOfElement){
+        new WebDriverWait(driver, TIMEOUT).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathOfElement)));
     }
 
     protected void waitUntilElementInvisible(final WebElement element){
@@ -130,11 +132,13 @@ public class Base {
     }
 
     public void scrollToElement(String xpathOfElement){
+//        Actions actions = new Actions(driver);
+//        actions.moveToElement(element);
+//        actions.perform();
+//        waitUntilElementEnabled(element);
+        waitUntilElementVisible(xpathOfElement);
         WebElement element = driver.findElement(By.xpath(xpathOfElement));
-        Actions actions = new Actions(driver);
-        actions.moveToElement(element);
-        actions.perform();
-        waitUntilElementEnabled(element);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
     }
 
     public String testDataExcelFilePath(){
