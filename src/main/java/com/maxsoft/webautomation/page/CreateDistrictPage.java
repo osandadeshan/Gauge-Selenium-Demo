@@ -23,6 +23,12 @@ public class CreateDistrictPage extends CommonPage {
 
     // Basic Information Section
 
+    @FindBy(xpath = "//button[@class='btn btn-primary'][@title='Save']")
+    private WebElement BTN_SAVE;
+
+    @FindBy(xpath = "//button[@class='btn btn-default'][@title='Cancel']")
+    private WebElement BTN_CANCEL;
+
     @FindBy(id = "district-name")
     private WebElement TXT_DISTRICT_NAME;
 
@@ -40,6 +46,9 @@ public class CreateDistrictPage extends CommonPage {
 
     @FindBy(id = "security-realm")
     private WebElement TXT_REALAM;
+
+    @FindBy(xpath = "//span[contains(text(),'Select File')]")
+    private WebElement BTN_SELECT_FILE;
 
     // Scholastic Years Section
 
@@ -72,7 +81,7 @@ public class CreateDistrictPage extends CommonPage {
     @FindBy(xpath = "//input[@class='form-control'][@data-field-name='email']")
     private WebElement TXT_EMAIL;
 
-    @FindBy(xpath = "//button[@title='Next']")
+    @FindBy(xpath = "//button[@class='btn btn-primary'][@title='Next']")
     private WebElement BTN_NEXT;
 
     @FindBy(xpath = "//button[@class='btn btn-primary'][@title='Submit']")
@@ -87,6 +96,10 @@ public class CreateDistrictPage extends CommonPage {
                                String districtAdminEmpNo) {
         // Basic Information Section
         waitUntilLoadingCompleted();
+        waitUntilElementEnabled(BTN_SELECT_FILE);
+        waitUntilElementClickable(BTN_NEXT);
+        waitUntilElementClickable(BTN_SAVE);
+        waitUntilElementClickable(BTN_CANCEL);
         setTextAs(TXT_DISTRICT_NAME, districtName);
         setTextAs(TXT_ADDRESS, address);
         setTextAs(TXT_EMAIL_DOMAIN, emailDomain);
@@ -101,8 +114,10 @@ public class CreateDistrictPage extends CommonPage {
         setTextAs(TXT_FIRST_NAME, districtAdminFirstName);
         setTextAs(TXT_LAST_NAME, districtAdminLastName);
         setTextAs(TXT_EMPLOYEE_NO, districtAdminEmpNo);
+
         String districtAdminEmail = districtAdminFirstName + "." + districtAdminLastName + "@" + emailDomain;
         setTextAs(TXT_EMAIL, districtAdminEmail);
+
         waitUntilToastMessageDisappeared();
         clickElement(BTN_SUBMIT);
         waitUntilToastMessageDisappeared();

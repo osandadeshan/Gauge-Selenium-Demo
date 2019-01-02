@@ -39,8 +39,7 @@ public class Base {
     }
 
     protected void waitUntilElementClickable(WebElement element){
-        WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
-        wait.until(ExpectedConditions.elementToBeClickable(element));
+        new WebDriverWait(driver, TIMEOUT).until(ExpectedConditions.elementToBeClickable(element));
     }
 
     protected void waitUntilElementEnabled(final WebElement element){
