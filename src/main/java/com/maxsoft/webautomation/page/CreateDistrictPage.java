@@ -92,8 +92,8 @@ public class CreateDistrictPage extends CommonPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void createDistrict(String districtName, String address, String emailDomain, String realam, String districtAdminFirstName, String districtAdminLastName,
-                               String districtAdminEmpNo) {
+    public void fillDistrictInfo(String districtName, String address, String emailDomain, String realam, String districtAdminFirstName, String districtAdminLastName,
+                                 String districtAdminEmpNo) {
         // Basic Information Section
         waitUntilLoadingCompleted();
         waitUntilElementEnabled(BTN_SELECT_FILE);
@@ -119,6 +119,9 @@ public class CreateDistrictPage extends CommonPage {
         setTextAs(TXT_EMAIL, districtAdminEmail);
 
         waitUntilToastMessageDisappeared();
+    }
+
+    public void submit(){
         clickElement(BTN_SUBMIT);
         waitUntilToastMessageDisappeared();
     }
