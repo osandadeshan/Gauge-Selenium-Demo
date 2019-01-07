@@ -1,11 +1,13 @@
 # Create District Specification
 
+<pre>
 Project Name    : Gauge-UI-Automation-Demo
 Developer       : Kushani Karunarathne
 Version         : 1.0.0
 Date            : 12/23/2018
 Time            : 9:41 AM
 Description     : This is an executable specification file which covers the login scenarios.
+</pre>
 
 
 table: ./resources/test_data/csv/create_district.csv

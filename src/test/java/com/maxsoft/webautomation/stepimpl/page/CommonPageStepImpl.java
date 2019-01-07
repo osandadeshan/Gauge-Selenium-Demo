@@ -1,6 +1,6 @@
 package com.maxsoft.webautomation.stepimpl.page;
 
-import com.maxsoft.webautomation.common.CommonPage;
+import com.maxsoft.webautomation.page.CommonPage;
 import com.maxsoft.webautomation.util.driver.Driver;
 import com.maxsoft.webautomation.util.reader.Excel;
 import com.thoughtworks.gauge.Step;

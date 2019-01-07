@@ -18,13 +18,16 @@ import java.io.IOException;
  * Date         : 12/12/2018
  * Time         : 11:20
  * Description  :
- **/
+**/
 
 
 public class Excel {
 
     private static Base baseObj = new Base();
     private static String excelFilePath = baseObj.testDataExcelFilePath();
+    private static final int DEFAULT_TEXT_DISTANCE = 40;
+    private static final int TEXT_DISTANCE = 40;
+    private static final String SPACE = " ";
 
     public static int findRowNumber(String sheetName, String cellContent) throws IOException {
         FileInputStream excelFile = new FileInputStream(new File(excelFilePath));
@@ -50,7 +53,7 @@ public class Excel {
             Workbook workbook = new XSSFWorkbook(excelFile);
             Sheet workSheet = workbook.getSheet(sheetName);
             cellValue = workSheet.getRow(Excel.findRowNumber(sheetName, cellContent)).getCell(colNum).getStringCellValue();
-            baseObj.print("Key \t[" + cellContent + "] \t\t\t\t\t→ Value \t[" + cellValue + "]");
+            baseObj.print("<pre>Key: [" + cellContent + "] " + getSpaces(cellContent.length()) + " Value: [" + cellValue + "]</pre>");
             return cellValue;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -58,6 +61,21 @@ public class Excel {
             e.printStackTrace();
         }
         return cellValue;
+    }
+
+    public static String getSpaces(int charCount){
+        String spaces = "";
+        int noOfSpaces = TEXT_DISTANCE - charCount;
+        if (noOfSpaces > 0) {
+            for (int i = 0; i < noOfSpaces; i++) {
+                spaces = spaces.concat(SPACE);
+            }
+        } else {
+            for (int i = 0; i < DEFAULT_TEXT_DISTANCE; i++) {
+                spaces = spaces.concat(SPACE);
+            }
+        }
+        return spaces;
     }
 
 
