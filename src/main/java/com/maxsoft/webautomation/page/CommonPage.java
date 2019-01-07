@@ -1,5 +1,6 @@
-package com.maxsoft.webautomation.common;
+package com.maxsoft.webautomation.page;
 
+import com.maxsoft.webautomation.common.Base;
 import com.maxsoft.webautomation.util.driver.Driver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
