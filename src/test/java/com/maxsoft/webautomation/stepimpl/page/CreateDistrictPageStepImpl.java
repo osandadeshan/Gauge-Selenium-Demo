@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import com.thoughtworks.gauge.Table;
 import com.thoughtworks.gauge.TableRow;
-import java.util.List;
 import static com.maxsoft.webautomation.common.Base.getCurrentEpochTime;
 
 /**
@@ -25,26 +24,32 @@ public class CreateDistrictPageStepImpl {
     private WebDriver driver = Driver.driver;
     private CreateDistrictPage createDistrictPage = PageFactory.initElements(driver, CreateDistrictPage.class);
 
+    private static final String DISTRICT_NAME = "District Name";
+    private static final String ADDRESS = "Address";
+    private static final String EMAIL_DOMAIN = "Email Domain";
+    private static final String REALAM = "Realam";
+    private static final String FIRST_NAME = "First Name";
+    private static final String LAST_NAME = "Last Name";
+    private static final String EMP_NO = "EMP No";
+
     @Step("Fill district information <table>")
     public void createDistrict(Table table) {
         String currentEpochTime = "";
-        List<String> columnNames = table.getColumnNames();
         for (TableRow row : table.getTableRows()) {
             currentEpochTime = getCurrentEpochTime();
             createDistrictPage.fillDistrictInfo(
                     // Basic Information Section
-                    row.getCell(columnNames.get(0)).concat(currentEpochTime),
-                    row.getCell(columnNames.get(1)),
-                    row.getCell(columnNames.get(2)),
-                    row.getCell(columnNames.get(3)),
+                    row.getCell(DISTRICT_NAME).concat(currentEpochTime),
+                    row.getCell(ADDRESS),
+                    row.getCell(EMAIL_DOMAIN),
+                    row.getCell(REALAM),
 
                     // District Administrator Section
-                    row.getCell(columnNames.get(4)),
-                    row.getCell(columnNames.get(5)).concat(currentEpochTime),
-                    row.getCell(columnNames.get(6))
+                    row.getCell(FIRST_NAME),
+                    row.getCell(LAST_NAME).concat(currentEpochTime),
+                    row.getCell(EMP_NO)
             );
-            createDistrictPage.saveToScenarioDataStore("districtName", row.getCell(columnNames.get(0)).concat(currentEpochTime));
-            currentEpochTime = "";
+            createDistrictPage.saveToScenarioDataStore("districtName", row.getCell(DISTRICT_NAME).concat(currentEpochTime));
         }
     }
 

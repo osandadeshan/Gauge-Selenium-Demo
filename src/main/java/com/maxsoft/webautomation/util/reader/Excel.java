@@ -1,6 +1,7 @@
 package com.maxsoft.webautomation.util.reader;
 
 import com.maxsoft.webautomation.common.Base;
+import com.thoughtworks.gauge.Gauge;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -53,7 +54,8 @@ public class Excel {
             Workbook workbook = new XSSFWorkbook(excelFile);
             Sheet workSheet = workbook.getSheet(sheetName);
             cellValue = workSheet.getRow(Excel.findRowNumber(sheetName, cellContent)).getCell(colNum).getStringCellValue();
-            baseObj.print("<pre>Key: [" + cellContent + "] " + getSpaces(cellContent.length()) + " Value: [" + cellValue + "]</pre>");
+            System.out.println("Key: [" + cellContent + "] " + getSpaces(cellContent.length()) + " Value: [" + cellValue + "]");
+            Gauge.writeMessage("<pre>Key: [" + cellContent + "] " + getSpaces(cellContent.length()) + " Value: [" + cellValue + "]</pre>");
             return cellValue;
         } catch (FileNotFoundException e) {
             e.printStackTrace();

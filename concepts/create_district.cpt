@@ -14,9 +14,9 @@ Description     : This is an executable concept file
 * On District Creation page
 * Fill district information
 
-   |District Name  |Address  |Email Domain  |Realam  |FirstName  |LastName  |EMP No  |
-   |---------------|---------|--------------|--------|-----------|----------|--------|
-   |<District Name>|<Address>|<Email Domain>|<Realam>|<FirstName>|<LastName>|<EMP No>|
+   |District Name  |Address  |Email Domain  |Realam  |First Name  |Last Name  |EMP No  |
+   |---------------|---------|--------------|--------|------------|-----------|--------|
+   |<District Name>|<Address>|<Email Domain>|<Realam>|<FirstName> |<LastName> |<EMP No>|
 
 * Submit district information
 * Scroll to the district from district name saved in data store
