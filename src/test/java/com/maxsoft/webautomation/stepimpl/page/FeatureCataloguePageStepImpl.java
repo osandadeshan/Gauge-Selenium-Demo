@@ -31,5 +31,10 @@ public class FeatureCataloguePageStepImpl {
         featureCataloguePage.navigateToManageDistricts();
     }
 
+    @Step("On Schools page")
+    public void navigateToSchools(){
+        featureCataloguePage.navigateToSchoolCreation();
+    }
+
 
 }

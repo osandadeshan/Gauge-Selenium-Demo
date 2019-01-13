@@ -27,6 +27,12 @@ public class FeatureCataloguePage extends CommonPage {
     @FindBy(id = "manage-districts-menu-item-link")
     private WebElement LBL_MANAGE_DISTRICT;
 
+    @FindBy(id = "settings-menu-group-link")
+    private WebElement LBL_SETTINGS;
+
+    @FindBy(id = "school-accounts-menu-item-link")
+    private WebElement LBL_ACCOUNTS;
+
 
     public FeatureCataloguePage() {
         PageFactory.initElements(driver, this);
@@ -39,6 +45,13 @@ public class FeatureCataloguePage extends CommonPage {
 
     public void navigateToManageDistricts(){
         clickElement(LBL_MANAGE_DISTRICT);
+        waitUntilLoadingCompleted();
+    }
+
+    public void navigateToSchoolCreation(){
+        clickElement(LBL_SETTINGS);
+        waitUntilLoadingCompleted();
+        clickElement(LBL_ACCOUNTS);
         waitUntilLoadingCompleted();
     }
 

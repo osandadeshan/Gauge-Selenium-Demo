@@ -1,0 +1,16 @@
+Project Name : Gauge-UI-Automation-Demo
+Developer : Kushani Karunarathne
+Version : 1.0.0
+Date : 2019-01-03
+Time : 04:23
+Description : This is an executable concept file
+
+
+
+# Login as the District Admin
+
+* On Login page
+* Login to the application using the username and password
+
+    |Sheet Name For Username|Key Name For Username  |Sheet Name For Password|Key Name For Password  |
+    |Login Data             |District Admin Username|Login Data             |District Admin Password|

@@ -278,5 +278,12 @@ public class Base {
         return value;
     }
 
+    public void selectFromDropdown(WebElement dropDown, String visibleText) {
+        waitUntilElementEnabled(dropDown);
+        clickElement(dropDown);
+        Select dropdown = new Select(dropDown);
+        dropdown.selectByVisibleText(visibleText);
+    }
+
 
 }
