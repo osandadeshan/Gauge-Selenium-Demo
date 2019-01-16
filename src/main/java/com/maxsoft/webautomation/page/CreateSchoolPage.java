@@ -46,8 +46,23 @@ public class CreateSchoolPage extends CommonPage {
     @FindBy(id = "location" )
     private WebElement TXT_SCHOOL_ADDRESS;
 
+    @FindBy(id = "line1" )
+    private WebElement TXT_SCHOOL_ADDRESS_LINE1;
+
+    @FindBy(id = "suburb" )
+    private WebElement TXT_SCHOOL_SUBURB;
+
     @FindBy(id = "timezone" )
     private WebElement DROPDOWN_TIME_ZONE;
+
+    @FindBy(id = "postCode" )
+    private WebElement TXT_POSTAL_CODE;
+
+    @FindBy(id = "state" )
+    private WebElement TXT_STATE;
+
+    @FindBy(id = "country" )
+    private WebElement TXT_COUNTRY;
 
     @FindBy(css = "span.select2-search.select2-search--dropdown > input.select2-search__field]" )
     private WebElement DROPDOWN_TIME_ZONE_SEARCH_BOX;
@@ -85,17 +100,24 @@ public class CreateSchoolPage extends CommonPage {
         clickElement(BTN_SCHOOL_CREATE);
     }
 
-    public void createSchool(String schoolCode, String schoolName, String schoolKind, String schoolType, String schoolAddress, String timeZone, String staffId, String schoolAdminFirstName, String schoolAdminLastName, String phone, String schoolAdminEmail, String schoolAdminRepeatEmail) {
+    public void createSchool(String schoolCode, String schoolName, String schoolKind, String schoolType, String schoolAddress, String schoolAddressLine1, String suburb, String timeZone, String postalCode, String state, String country,
+                             String staffId, String schoolAdminFirstName, String schoolAdminLastName, String phone, String schoolAdminEmail, String schoolAdminRepeatEmail) {
 
         //School Registration section
         waitUntilLoadingCompleted();
+        closeSocialSideBarMenu();
         setTextAs(TXT_SCHOOL_CODE, schoolCode);
         setTextAs(TXT_SCHOOL_NAME, schoolName);
-        implicitlyWait(5);
         selectFromDropdown(DROPDOWN_SCHOOL_KIND, schoolKind);
         selectFromDropdown(DROPDOWN_SCHOOL_TYPE, schoolType);
         setTextAs(TXT_SCHOOL_ADDRESS, schoolAddress);
+        setTextAs(TXT_SCHOOL_ADDRESS_LINE1, schoolAddressLine1);
+        setTextAs(TXT_SCHOOL_SUBURB, suburb);
+        setTextAs(TXT_POSTAL_CODE, postalCode);
+        setTextAs(TXT_STATE, state);
+        setTextAs(TXT_COUNTRY, country);
         selectFromDropdown(DROPDOWN_TIME_ZONE, timeZone);
+        clickElementByJavascriptExecutor(BTN_NEXT);
 
         //Contact Information section
         setTextAs(TXT_STAFF_ID, staffId);

@@ -22,9 +22,9 @@ table: ./resources/test_data/csv/create_school.csv
 * On School Creation page
 * Create a new school
 
-   |School Code  |School Name  |School Kind  |School Type  |School Address  |Time Zone  |Staff Id  |School Admin FirstName   |School Admin LastName   |Phone  |Email               |Repeat Email               |
-   |-------------|-------------|-------------|-------------|----------------|-----------|----------|-------------------------|------------------------|-------|--------------------|---------------------------|
-   |<School Code>|<School Name>|<School Kind>|<School Type>|<School Address>|<Time Zone>|<Staff Id>|<School Admin First Name>|<School Admin Last Name>|<Phone>|<School Admin Email>|<Repeat School Admin Email>|
+   |School Code  |School Name  |School Kind  |School Type  |School Address  |School Address Line 1  |Time Zone  |Suburb   |Postal Code  |State      |Country    |Staff Id  |School Admin First Name  |School Admin Last Name  |Phone  |Email               |Repeat Email               |
+   |-------------|-------------|-------------|-------------|----------------|-----------------------|-----------|---------|-------------|-----------|-----------|----------|-------------------------|------------------------|-------|--------------------|---------------------------|
+   |<School Code>|<School Name>|<School Kind>|<School Type>|<School Address>|<School Address Line 1>|<Time Zone>|<Suburb> |<Postal Code>|<State>    |<Country>  |<Staff Id>|<School Admin First Name>|<School Admin Last Name>|<Phone>|<School Admin Email>|<Repeat School Admin Email>|
 
 _______________________________
 

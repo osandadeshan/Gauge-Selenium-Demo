@@ -33,6 +33,9 @@ public class CommonPage extends Base {
     @FindBy(xpath = "//div[@id='toast-container']")
     private WebElement TOAST_MESSAGE;
 
+    @FindBy(xpath = "//li/a[@id='social-sidebar-menu-item-link']")
+    private WebElement SOCIAL_SIDEBAR_MENU;
+
 
     public CommonPage() {
         PageFactory.initElements(driver, this);
@@ -50,6 +53,10 @@ public class CommonPage extends Base {
     public void waitUntilToastMessageDisappeared(){
         clickElement(TOAST_MESSAGE);
         waitUntilElementInvisible(TOAST_MESSAGE);
+    }
+
+    public void closeSocialSideBarMenu(){
+        clickElement(SOCIAL_SIDEBAR_MENU);
     }
 
     public void signOut(){

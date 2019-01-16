@@ -1,2 +1,2 @@
-School Code,School Name,School Kind,School Type,School Address,Time Zone,Staff Id,School Admin First Name,School Admin Last Name,Phone,School Admin Email,Repeat School Admin Email
-SCH001,St Peters College,Public,Primary,"Galleria Blvd, Roseville, CA, USA","(GMT+8:00) Australia/Perth",SHA001,John,Luther,9412345678,john.luther@mailinator.com,john.luther@mailinator.com
+School Code,School Name,School Kind,School Type,School Address,School Address Line 1,Suburb,Time Zone,Postal Code,State,Country,Staff Id,School Admin First Name,School Admin Last Name,Phone,School Admin Email,Repeat School Admin Email
+SCH001,St Peters College,Public,Primary,"104 Princes Hwy, Arncliffe NSW 2205, Australia",104 Princes Hwy,Ambalangoda,(GMT+8:00) Australia/Perth,80300,Galle,Sri Lanka,SHA001,John,Luther,9412345678,john.luther@mailinator.com,john.luther@mailinator.com

@@ -88,8 +88,53 @@ public class Base {
         wait.until(elementIsDisplayed);
     }
 
+    public void waitUntilElementRedrawed(WebElement element){
+        new WebDriverWait(driver, TIMEOUT).until(ExpectedConditions.refreshed(ExpectedConditions.stalenessOf(element)));
+    }
+
+    public void waitUntilPageLoaded() {
+        ExpectedCondition<Boolean> expectation = new
+                ExpectedCondition<Boolean>() {
+                    public Boolean apply(WebDriver driver) {
+                        return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
+                    }
+                };
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
+            wait.until(expectation);
+        } catch (Throwable error) {
+            Assert.fail("Timeout waiting for page load request to complete.");
+        }
+    }
+
+    public void scrollToElement(WebElement element){
+        /** Scroll to the element using Touch Actions
+         Actions actions = new Actions(driver);
+         actions.moveToElement(element);
+         actions.perform();
+         waitUntilElementEnabled(element);
+         **/
+        // Scroll to the element using JavascriptExecutor
+        waitUntilElementVisible(element);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
+    }
+
+    public void scrollToElement(String xpathOfElement){
+        /** Scroll to the element using Touch Actions
+         Actions actions = new Actions(driver);
+         actions.moveToElement(element);
+         actions.perform();
+         waitUntilElementEnabled(element);
+         **/
+        // Scroll to the element using JavascriptExecutor
+        waitUntilElementVisible(xpathOfElement);
+        WebElement element = driver.findElement(By.xpath(xpathOfElement));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
+    }
+
     protected void setTextAs(WebElement element, String text){
-        waitUntilElementClickable(element);
+        waitUntilElementEnabled(element);
+        element.click();
         element.sendKeys(text);
     }
 
@@ -98,20 +143,40 @@ public class Base {
         element.click();
     }
 
-    protected void executeJavascript(String javascriptCode){
-        JavascriptExecutor ex=(JavascriptExecutor)driver;
-        ex.executeScript(javascriptCode);
+    protected void clickElementByXCoordinates(WebElement element){
+        waitUntilElementClickable(element);
+        ((JavascriptExecutor)driver).executeScript("window.scrollTo(0,"+element.getLocation().x+")");
+        element.click();
+    }
+
+    protected void clickElementByYCoordinates(WebElement element){
+        waitUntilElementClickable(element);
+        ((JavascriptExecutor)driver).executeScript("window.scrollTo(0,"+element.getLocation().y+")");
+        element.click();
     }
 
     protected void clickElementByJavascriptExecutor(String xpath){
-        WebElement element=driver.findElement(By.xpath(xpath));
-        JavascriptExecutor ex=(JavascriptExecutor)driver;
-        ex.executeScript("arguments[0].click()", element);
+        WebElement element = driver.findElement(By.xpath(xpath));
+        waitUntilElementClickable(element);
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("arguments[0].click();", element);
+    }
+
+    protected void clickElementByJavascriptExecutor(WebElement element){
+        waitUntilElementClickable(element);
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("arguments[0].click();", element);
     }
 
     protected void clickLink(WebElement element){
         waitUntilElementEnabled(element);
         element.click();
+    }
+
+    public void selectFromDropdown(WebElement dropDown, String visibleText) {
+        clickElementByJavascriptExecutor(dropDown);
+        Select dropdown = new Select(dropDown);
+        dropdown.selectByVisibleText(visibleText);
     }
 
     protected String getText(WebElement element){
@@ -128,17 +193,9 @@ public class Base {
     }
 
     public void implicitlyWait(int seconds){
-        driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
-    }
-
-    public void scrollToElement(String xpathOfElement){
-//        Actions actions = new Actions(driver);
-//        actions.moveToElement(element);
-//        actions.perform();
-//        waitUntilElementEnabled(element);
-        waitUntilElementVisible(xpathOfElement);
-        WebElement element = driver.findElement(By.xpath(xpathOfElement));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeAsyncScript("window.setTimeout(arguments[arguments.length - 1], "+seconds+"000);");
+        //driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
     }
 
     public String testDataExcelFilePath(){
@@ -276,13 +333,6 @@ public class Base {
                 Assert.fail("Please provide a valid data store type");
         }
         return value;
-    }
-
-    public void selectFromDropdown(WebElement dropDown, String visibleText) {
-        waitUntilElementEnabled(dropDown);
-        clickElement(dropDown);
-        Select dropdown = new Select(dropDown);
-        dropdown.selectByVisibleText(visibleText);
     }
 
 

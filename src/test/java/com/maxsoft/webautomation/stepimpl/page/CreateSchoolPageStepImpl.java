@@ -27,6 +27,23 @@ public class CreateSchoolPageStepImpl {
     private WebDriver driver = Driver.driver;
     private CreateSchoolPage createSchoolPage = PageFactory.initElements(driver, CreateSchoolPage.class);
 
+    private static final String SCHOOL_CODE = "School Code";
+    private static final String SCHOOL_NAME = "School Name";
+    private static final String SCHOOL_KIND = "School Kind";
+    private static final String SCHOOL_TYPE = "School Type";
+    private static final String SCHOOL_ADDRESS = "School Address";
+    private static final String SCHOOL_ADDRESS_LINE1 = "School Address Line 1";
+    private static final String SUBURB = "Suburb";
+    private static final String TIMEZONE = "Time Zone";
+    private static final String POSTAL_CODE = "Postal Code";
+    private static final String STATE = "State";
+    private static final String COUNTRY = "Country";
+    private static final String STAFF_ID = "Staff Id";
+    private static final String SCHOOL_ADMIN_FIRST_NAME = "School Admin First Name";
+    private static final String SCHOOL_ADMIN_LAST_NAME = "School Admin Last Name";
+    private static final String PHONE = "Phone";
+    private static final String EMAIL = "Email";
+    private static final String REPEAT_EMAIL = "Repeat Email";
 
     @Step("On School Creation page")
     public void navigateToCreateSchool(){
@@ -41,20 +58,25 @@ public class CreateSchoolPageStepImpl {
             currentEpochTime = getCurrentEpochTime();
             createSchoolPage.createSchool(
                     // School Registration Section
-                    row.getCell(columnNames.get(0)).concat(currentEpochTime),
-                    row.getCell(columnNames.get(1)).concat(currentEpochTime),
-                    row.getCell(columnNames.get(2)),
-                    row.getCell(columnNames.get(3)),
-                    row.getCell(columnNames.get(4)),
-                    row.getCell(columnNames.get(5)),
+                    row.getCell(SCHOOL_CODE).concat(currentEpochTime),
+                    row.getCell(SCHOOL_NAME).concat(currentEpochTime),
+                    row.getCell(SCHOOL_KIND),
+                    row.getCell(SCHOOL_TYPE),
+                    row.getCell(SCHOOL_ADDRESS),
+                    row.getCell(SCHOOL_ADDRESS_LINE1),
+                    row.getCell(SUBURB),
+                    row.getCell(TIMEZONE),
+                    row.getCell(POSTAL_CODE),
+                    row.getCell(STATE),
+                    row.getCell(COUNTRY),
 
                     // Contact Information Section
-                    row.getCell(columnNames.get(6)),
-                    row.getCell(columnNames.get(7)),
-                    row.getCell(columnNames.get(8)),
-                    row.getCell(columnNames.get(9)),
-                    row.getCell(columnNames.get(10)),
-                    row.getCell(columnNames.get(11))
+                    row.getCell(STAFF_ID),
+                    row.getCell(SCHOOL_ADMIN_FIRST_NAME),
+                    row.getCell(SCHOOL_ADMIN_LAST_NAME),
+                    row.getCell(PHONE),
+                    row.getCell(EMAIL),
+                    row.getCell(REPEAT_EMAIL)
             );
             createSchoolPage.saveToScenarioDataStore("schoolName", row.getCell(columnNames.get(1)).concat(currentEpochTime));
         }

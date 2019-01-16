@@ -9,7 +9,7 @@ Description     : This is an executable concept file
 
 
 
-# Create district using district name as <District Name>, address as <Address>, email domain as <Email Domain>, security realam as <Realam>, first name as <FirstName>, last name as <LastName> and emp no as <EMP No>
+# Create and submit district using district name as <District Name>, address as <Address>, email domain as <Email Domain>, security realam as <Realam>, first name as <FirstName>, last name as <LastName> and emp no as <EMP No>
 
 * On District Creation page
 * Fill district information
